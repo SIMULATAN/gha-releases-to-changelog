@@ -23,6 +23,7 @@ async function run({
     console.info("Started retrieving releases");
     const request = listReleases(token);
     const { data } = await request(getInput("repo") ?? context);
+    core.setFailed(data + " | " + getInput("repo"))
 
     const { changelog, latest } = getChangelogAndLatest(data, {getInput});
 
