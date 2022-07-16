@@ -50,7 +50,7 @@ function getChangelogAndLatest(releases, {getInput}) {
         return null;
       }
 
-      if (afterTag != undefined && afterTag.published_at > published_at) {
+      if (afterTag != undefined && afterTag.published_at >= published_at) {
         console.info(`Skipping release with the name "${name}" because it's older than the specified after-tag`);
         return null;
       }
