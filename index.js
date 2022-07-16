@@ -17,6 +17,7 @@ async function run({
   listReleases,
   context,
 }) {
+  core.setFailed("debugg")
   try {
     const token = getInput("token");
 
