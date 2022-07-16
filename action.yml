@@ -25,5 +25,5 @@ outputs:
   latest:
     description: 'The tag name of the latest release'
 runs:
-  using: 'node12'
+  using: 'node18'
   main: 'dist/index.js'
