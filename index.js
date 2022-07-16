@@ -42,10 +42,16 @@ function getChangelogAndLatest(releases, {getInput}) {
 
   const spacing = "\n\n";
   const latest = { tag: null, date: null };
+  const afterTag = releases.find(r => r.tag_name == getInput("after-tag"));
   const changelog = releases
     .map(({ tag_name, draft, published_at, name, body }) => {
       if (draft) {
         console.info(`Skipping draft with the name "${name}"`);
+        return null;
+      }
+
+      if (afterTag != undefined && afterTag.published_at > published_at) {
+        console.info(`Skipping release with the name "${name}" because it's older than the specified after-tag`);
         return null;
       }
 

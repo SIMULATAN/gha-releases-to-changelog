@@ -14,6 +14,9 @@ inputs:
   repo:
     required: false
     description: 'The repository to use'
+  after-tag:
+    required: false
+    description: 'The tag to start from'
   title-template:
     required: false
     default: '%%TITLE%%'
