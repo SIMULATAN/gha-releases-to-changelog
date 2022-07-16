@@ -2,8 +2,7 @@ const core = require("@actions/core");
 const github = require("@actions/github");
 
 if (require.main === module) {
-  const getListReleases = (token) =>
-    github.getOctokit(token).repos.listReleases;
+  const getListReleases = (token) => github.getOctokit(token).repos.listReleases;
   run({
     getInput: core.getInput,
     setOutput: core.setOutput,
@@ -23,7 +22,7 @@ async function run({
 
     console.info("Started retrieving releases");
     const request = listReleases(token);
-    const { data } = await request(context);
+    const { data } = await request(getInput("repo") ?? context);
 
     const { changelog, latest } = getChangelogAndLatest(data, {getInput});
 
