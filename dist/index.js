@@ -23,12 +23,12 @@ async function run({
   listReleases,
   context,
 }) {
-  core.setFailed("debugg")
   try {
     const token = getInput("token");
 
     console.info("Started retrieving releases");
     const request = listReleases(token);
+    console.info(context)
     const { data } = await request(getInput("repo") ?? context);
     core.setFailed(data + " | " + getInput("repo"))
 
