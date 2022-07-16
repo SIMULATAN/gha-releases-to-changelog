@@ -22,7 +22,7 @@ async function run({
 
     console.info("Started retrieving releases");
     const request = listReleases(token);
-    const { data } = getInput("user") && getInput("repo") ? await request(getInput("user"), getInput("repo")) : await request(context);
+    const { data } = getInput("user") && getInput("repo") ? await request({ owner: getInput("user"), repo: getInput("repo") }) : await request(context);
 
     const { changelog, latest } = getChangelogAndLatest(data, {getInput});
 
